@@ -1,505 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Past Winners — Cause Catalyst Awards</title>
-  <meta name="theme-color" content="#132b1e">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --forest: #132b1e;
-      --forest-mid: #1e4030;
-      --forest-light: #2a5542;
-      --gold: #c8973a;
-      --gold-light: #e8b85a;
-      --cream: #f7f2e9;
-      --cream-dim: #d9cfbb;
-      --ink: #0e1f16;
-      --border: rgba(200,151,58,0.2);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Winners &mdash; Cause Catalyst Awards</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg: #faf9f6; --surface: #fff; --ink: #1a1a1a; --ink-2: #4a4a4a; --ink-3: #8a8a8a; --green: #1b4332; --green-light: #2d6a4f; --green-pale: #edf5f0; --rule: #e5e3de; --amber: #b45309; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Jost', sans-serif;
-      background: var(--forest);
-      color: var(--cream);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    .serif { font-family: 'Playfair Display', Georgia, serif; }
+  nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 0 clamp(24px, 5vw, 80px); height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-name { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink-3); text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { color: var(--surface) !important; background: var(--green); padding: 7px 18px; border-radius: 4px; }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1.25rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      background: rgba(14, 31, 22, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--cream);
-    }
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .logo-icon svg { width: 22px; height: 22px; fill: var(--ink); }
-    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-    .logo-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 500; }
-    .logo-subtitle { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--cream-dim);
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--cream); }
-    .nav-links a.active { color: var(--gold-light); }
-    .btn-nav {
-      padding: 0.7rem 1.5rem;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--ink) !important;
-      border-radius: 100px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(200, 151, 58, 0.3);
-    }
+  .page-header { padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 80px) clamp(32px, 4vw, 48px); max-width: 640px; }
+  .page-header h1 { font-family: 'Newsreader', Georgia, serif; font-size: clamp(32px, 5vw, 48px); font-weight: 400; line-height: 1.1; margin-bottom: 12px; }
+  .page-header p { font-size: 16px; color: var(--ink-2); line-height: 1.6; }
 
-    /* Hero */
-    .page-hero {
-      padding: 10rem 4rem 4rem;
-      background: linear-gradient(165deg, var(--ink) 0%, var(--forest) 40%, var(--forest-mid) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(200, 151, 58, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .hero-content { max-width: 650px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      border-radius: 1px;
-    }
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: var(--cream);
-    }
-    .page-hero h1 em { font-style: italic; color: var(--gold-light); }
-    .lead {
-      font-size: 1.05rem;
-      color: var(--cream-dim);
-      line-height: 1.8;
-    }
+  .content { padding: 0 clamp(24px, 5vw, 80px) clamp(60px, 8vw, 100px); max-width: 1100px; margin: 0 auto; }
 
-    /* Content */
-    .page-content {
-      padding: 4rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  .empty { border: 1px dashed var(--rule); border-radius: 6px; padding: 60px 40px; text-align: center; }
+  .empty h2 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+  .empty p { font-size: 15px; color: var(--ink-3); margin-bottom: 24px; }
+  .btn-primary { display: inline-block; background: var(--green); color: var(--surface); padding: 12px 28px; font-family: inherit; font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 4px; }
+  .btn-primary:hover { background: var(--green-light); }
 
-    /* Winners Grid */
-    .winners-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .winner-card {
-      background: var(--forest-mid);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    .winner-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(200, 151, 58, 0.12);
-    }
-    .winner-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    }
-    .winner-header {
-      padding: 2rem 1.75rem 1.5rem;
-    }
-    .winner-year {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.75rem;
-      background: rgba(200, 151, 58, 0.15);
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-    }
-    .winner-year svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--gold);
-    }
-    .winner-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: var(--cream);
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    .winner-card .winner-header p {
-      color: var(--cream-dim);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-    .winner-stats {
-      background: var(--forest);
-      padding: 1.25rem 1.75rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--gold);
-    }
+  .winners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .winner-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px; }
+  .winner-card .year { font-size: 12px; font-weight: 500; color: var(--amber); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .winner-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .winner-card .org { font-size: 14px; color: var(--green); font-weight: 500; margin-bottom: 8px; }
+  .winner-card .cat { font-size: 13px; color: var(--ink-3); }
+  .winner-card .bio { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-top: 10px; }
 
-    /* Empty State */
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: var(--forest-mid);
-      border-radius: 24px;
-      border: 2px dashed var(--border);
-    }
-    .empty-state-icon {
-      width: 80px;
-      height: 80px;
-      background: rgba(200, 151, 58, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
-    .empty-state-icon svg {
-      width: 40px;
-      height: 40px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 1.5;
-    }
-    .empty-state h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: var(--gold-light);
-      margin-bottom: 0.75rem;
-    }
-    .empty-state p {
-      color: var(--cream-dim);
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 500px;
-      margin: 0 auto 2rem;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 100px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(200, 151, 58, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200, 151, 58, 0.4);
-    }
-    .btn-primary svg {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-    }
+  footer { border-top: 1px solid var(--rule); padding: 40px clamp(24px, 5vw, 80px); display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-3); }
+  footer a { color: var(--ink-2); text-decoration: none; margin-left: 24px; }
 
-    /* Footer */
-    footer {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 4rem;
-      border-top: 1px solid var(--border);
-    }
-    .footer-content {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-main {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 4rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(200, 151, 58, 0.1);
-    }
-    .footer-brand p {
-      color: var(--cream-dim);
-      font-size: 0.9rem;
-      margin-top: 1rem;
-      max-width: 280px;
-    }
-    .footer-links h4 {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-      color: var(--gold);
-    }
-    .footer-links ul { list-style: none; }
-    .footer-links a {
-      color: var(--cream-dim);
-      text-decoration: none;
-      font-size: 0.9rem;
-      display: block;
-      padding: 0.35rem 0;
-      transition: color 0.3s ease;
-    }
-    .footer-links a:hover { color: var(--gold-light); }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 2rem;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--cream-dim);
-      opacity: 0.6;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      nav { padding: 1rem 2rem; }
-      .nav-links { display: none; }
-      .page-hero { padding: 8rem 2rem 3rem; }
-      .page-content { padding: 3rem 2rem; }
-      .winners-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    }
-    @media (max-width: 640px) {
-      .page-hero { padding: 7rem 1.5rem 2.5rem; }
-      .hero-container { flex-direction: column; text-align: center; }
-      .eyebrow { justify-content: center; }
-      .eyebrow::before { display: none; }
-      .page-content { padding: 2rem 1.5rem; }
-      .winners-grid { grid-template-columns: 1fr; }
-      .empty-state { padding: 3rem 1.5rem; }
-      .footer-main { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  </style>
+  @media (max-width: 768px) {
+    .nav-links li:not(:last-child) { display: none; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    footer a { margin: 0 8px; }
+  }
+</style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-      </div>
-      <span class="logo-text">
-        <span class="logo-title">Cause Catalyst Awards</span>
-        <span class="logo-subtitle">Catalyzing Change</span>
-      </span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html#categories">Categories</a></li>
-      <li><a href="index.html#process">Process</a></li>
-      <li><a href="past-winners.html" class="active">Past Winners</a></li>
-      <li><a href="nominate.html" class="btn-nav">Nominate</a></li>
-    </ul>
-  </nav>
 
-  <main>
-    <section class="page-hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <span class="eyebrow">Winners</span>
-          <h1 class="serif">Past Winners & <em>Impact</em></h1>
-          <p class="lead">Celebrating the individuals and organizations recognized for catalyzing extraordinary positive change in their communities.</p>
-        </div>
-        <a href="nominate.html" class="btn-nav">Nominate Now</a>
-      </div>
-    </section>
+<nav>
+  <a href="index.html" class="nav-name">Cause Catalyst Awards</a>
+  <ul class="nav-links">
+    <li><a href="index.html#categories">Categories</a></li>
+    <li><a href="past-winners.html" style="color:var(--ink)">Past Winners</a></li>
+    <li><a href="nominate.html" class="nav-cta">Nominate</a></li>
+  </ul>
+</nav>
 
-    <section class="page-content">
-      <div id="winners-loading" style="text-align:center;padding:2rem;color:var(--cream-dim);">Loading winners...</div>
-      <div id="winners-container"></div>
-    </section>
-  </main>
+<div class="page-header">
+  <h1>Past Winners</h1>
+  <p>Organizations and leaders recognized for extraordinary impact.</p>
+</div>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <div class="logo-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            </div>
-            <span class="logo-text">
-              <span class="logo-title">Cause Catalyst Awards</span>
-              <span class="logo-subtitle">Catalyzing Change</span>
-            </span>
-          </a>
-          <p>Recognizing those who catalyze extraordinary positive change in their communities.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Awards</h4>
-          <ul>
-            <li><a href="index.html#categories">All Categories</a></li>
-            <li><a href="past-winners.html">Past Winners</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="index.html#process">How It Works</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:awards@pulseforgood.com">awards@pulseforgood.com</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-copy">© 2026 Cause Catalyst Awards. All rights reserved.</div>
-      </div>
-    </div>
-  </footer>
+<div class="content">
+  <div id="loading" style="text-align:center;padding:40px;color:var(--ink-3)">Loading...</div>
+  <div id="winners-container"></div>
+</div>
 
-  <script src="assets/js/praiz-api.js"></script>
-  <script>
-    async function loadWinners() {
-      const loading = document.getElementById('winners-loading');
-      const container = document.getElementById('winners-container');
-      try {
-        const winners = await PraizAPI.getWinners();
-        loading.style.display = 'none';
+<footer>
+  <span>&copy; 2025 Cause Catalyst Awards</span>
+  <div><a href="index.html">Home</a><a href="nominate.html">Nominate</a><a href="index.html#categories">Categories</a></div>
+</footer>
 
-        if (!winners || winners.length === 0) {
-          container.innerHTML = `
-            <div class="empty-state">
-              <div class="empty-state-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              </div>
-              <h2 class="serif">Winners Coming Soon</h2>
-              <p>We're currently reviewing nominations. Winners will be announced when the selection process is complete.</p>
-              <a href="nominate.html" class="btn-primary">
-                Submit a Nomination
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
-            </div>`;
-          return;
-        }
-
-        container.innerHTML = '<div class="winners-grid">' +
-          winners.map(w => `
-            <div class="winner-card">
-              <div class="winner-header">
-                <div class="winner-year">
-                  <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                  ${w.year} Winner
-                </div>
-                <h3>${w.display_name}</h3>
-                ${w.display_organization ? `<p style="color:var(--gold);font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">${w.display_organization}</p>` : ''}
-                ${w.display_bio ? `<p>${w.display_bio}</p>` : ''}
-              </div>
-              <div class="winner-stats">
-                <div class="stat">
-                  <span class="stat-label">${w.category}</span>
-                </div>
-              </div>
-            </div>
-          `).join('') +
-          '</div>';
-      } catch (err) {
-        loading.innerHTML = '<p style="color:#fca5a5;">Unable to load winners. Please try again later.</p>';
+<script src="assets/js/praiz-api.js"></script>
+<script>
+  async function load() {
+    const loading = document.getElementById('loading');
+    const container = document.getElementById('winners-container');
+    try {
+      const winners = await PraizAPI.getWinners();
+      loading.style.display = 'none';
+      if (!winners || !winners.length) {
+        container.innerHTML = '<div class="empty"><h2>Winners coming soon</h2><p>We\'re reviewing nominations. Winners will be announced when selection is complete.</p><a href="nominate.html" class="btn-primary">Submit a Nomination</a></div>';
+        return;
       }
-    }
-    loadWinners();
-  </script>
+      container.innerHTML = '<div class="winners-grid">' + winners.map(w =>
+        `<div class="winner-card"><div class="year">${w.year} Winner</div><h3>${w.display_name}</h3>${w.display_organization ? `<div class="org">${w.display_organization}</div>` : ''}<div class="cat">${w.category}</div>${w.display_bio ? `<p class="bio">${w.display_bio}</p>` : ''}</div>`
+      ).join('') + '</div>';
+    } catch { loading.innerHTML = '<p style="color:#dc2626">Unable to load winners.</p>'; }
+  }
+  load();
+</script>
 </body>
 </html>
