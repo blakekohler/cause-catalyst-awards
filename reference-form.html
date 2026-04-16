@@ -3,71 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reference &mdash; Cause Catalyst Awards</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<title>Reference Form — Cause Catalyst Awards</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --bg: #faf9f6; --surface: #fff; --ink: #1a1a1a; --ink-2: #4a4a4a; --ink-3: #8a8a8a; --green: #1b4332; --green-light: #2d6a4f; --green-pale: #edf5f0; --rule: #e5e3de; --red: #dc2626; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  .page-bar { background: var(--green); color: var(--surface); padding: 20px clamp(24px, 5vw, 80px); }
-  .page-bar h1 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 400; }
-  .page-bar p { font-size: 14px; opacity: 0.7; margin-top: 4px; }
-  .container { max-width: 680px; margin: 0 auto; padding: clamp(32px, 4vw, 48px) clamp(24px, 5vw, 80px); }
-  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: clamp(24px, 3vw, 36px); margin-bottom: 20px; }
-  .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-  .field { margin-bottom: 14px; }
-  .field label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 5px; }
-  .field .req { color: var(--red); }
-  .field input, .field textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--rule); border-radius: 4px; font-family: inherit; font-size: 15px; background: var(--bg); }
-  .field input:focus, .field textarea:focus { outline: none; border-color: var(--green); }
-  .field textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
-  .field-hint { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
-  .btn-submit { background: var(--green); color: var(--surface); padding: 12px 28px; border: none; border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
-  .btn-submit:hover { background: var(--green-light); }
-  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-  .form-error { display: none; background: #fef2f2; border: 1px solid #fca5a5; border-radius: 4px; padding: 12px; margin-bottom: 16px; color: var(--red); font-size: 14px; }
-  .form-success { display: none; background: var(--green-pale); border-radius: 6px; padding: 32px; text-align: center; color: var(--green); }
-  .loading { text-align: center; padding: 60px 20px; color: var(--ink-3); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper: #f4ede0;
+  --paper-dark: #e8dccb;
+  --ink: #17120d;
+  --ink-mid: #3d2f23;
+  --red: #c0392b;
+  --red-dark: #96261e;
+  --muted: #7a6550;
+  --rule: rgba(23,18,13,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── PAGE HEADER BAR ── */
+.page-header-bar {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 20px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.page-header-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 16px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--paper); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.page-header-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+.page-header-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(244,237,224,0.5);
+}
+
+/* ── FORM CONTAINER ── */
+.form-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 40px 80px;
+}
+
+.page-hero-simple {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--ink);
+}
+.section-kicker {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.section-kicker::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+.page-title {
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.07; color: var(--ink); margin-bottom: 10px;
+}
+.page-subtitle {
+  font-size: 15px; color: var(--muted); font-style: italic; line-height: 1.7;
+}
+
+/* ── FORM ── */
+.form-section-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 24px; margin-top: 40px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 10px;
+}
+.form-section-label::before { content: ''; width: 14px; height: 2px; background: var(--red); }
+
+.form-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 6px;
+}
+.form-hint {
+  font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 8px; margin-top: -2px;
+}
+.form-input {
+  width: 100%; background: #fff; border: 1px solid rgba(23,18,13,0.2);
+  border-bottom: 2px solid var(--ink); color: var(--ink);
+  padding: 12px 14px; font-family: 'Libre Baskerville', serif;
+  font-size: 15px; outline: none; transition: border-color 0.2s; margin-bottom: 20px; display: block;
+}
+.form-input:focus { border-bottom-color: var(--red); }
+textarea.form-input { min-height: 140px; resize: vertical; }
+
+.btn-primary {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+  background: var(--red); color: #fff; padding: 16px 36px;
+  border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+.btn-primary:disabled { background: var(--muted); cursor: not-allowed; transform: none; }
+
+/* ── ALERTS ── */
+.form-alert {
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  border: 1px solid;
+  font-size: 14px; line-height: 1.6;
+}
+.form-alert-error {
+  border-color: var(--red);
+  background: rgba(192,57,43,0.05);
+  color: var(--red-dark);
+}
+.form-alert-success {
+  border-color: var(--ink);
+  background: rgba(23,18,13,0.03);
+  color: var(--ink);
+}
+.form-alert .alert-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.completed-state {
+  text-align: center;
+  padding: 80px 40px;
+}
+.completed-state .page-title { margin-bottom: 12px; }
+
+.loading-state {
+  text-align: center; padding: 80px 40px;
+  color: var(--muted); font-style: italic; font-size: 15px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .page-header-bar { padding: 16px 20px; }
+  .form-wrapper { padding: 36px 20px 60px; }
+}
 </style>
 </head>
 <body>
-<div class="page-bar">
-  <h1>Reference Recommendation</h1>
-  <p>Your feedback helps us identify outstanding leaders in human services.</p>
+
+<div class="page-header-bar">
+  <a href="index.html" class="page-header-brand"><span class="page-header-dot"></span>Cause Catalyst Awards</a>
+  <span class="page-header-label">Reference Form</span>
 </div>
-<div class="container">
-  <div id="loading" class="loading">Loading...</div>
-  <form id="reference-form" style="display:none">
-    <div class="card">
-      <h2>Your Recommendation</h2>
-      <div class="field"><label>How long have you known the nominee? <span class="req">*</span></label><input name="how_long_known" required placeholder="e.g. 5 years"></div>
-      <div class="field"><label>Nominee's greatest strengths <span class="req">*</span></label><textarea name="nominee_strengths" required minlength="20" placeholder="Key strengths related to their work and impact..."></textarea><p class="field-hint">Min 20 characters</p></div>
-      <div class="field"><label>Impact the nominee has had <span class="req">*</span></label><textarea name="nominee_impact" required minlength="20" placeholder="Specific outcomes, changes, or measurable results..."></textarea><p class="field-hint">Min 20 characters</p></div>
-      <div class="field"><label>Your recommendation <span class="req">*</span></label><textarea name="recommendation_text" required minlength="20" placeholder="Why do you recommend them for the Cause Catalyst Awards?"></textarea><p class="field-hint">Min 20 characters</p></div>
-      <div class="field"><label>Additional comments</label><textarea name="additional_comments" style="min-height:80px" placeholder="Anything else..."></textarea></div>
+
+<div class="form-wrapper">
+  <div id="loadingState" class="loading-state">Loading reference details...</div>
+
+  <div id="completedState" class="completed-state" style="display:none">
+    <div class="section-kicker" style="justify-content:center">Reference Complete</div>
+    <h1 class="page-title">Thank you.</h1>
+    <p class="page-subtitle">Your reference has been submitted successfully. We appreciate you taking the time to support this nomination.</p>
+  </div>
+
+  <div id="formState" style="display:none">
+    <div class="page-hero-simple">
+      <div class="section-kicker">Cause Catalyst Awards 2026</div>
+      <h1 class="page-title">Provide a Reference</h1>
+      <p class="page-subtitle">You have been listed as a professional reference for a Cause Catalyst Awards nominee. Please complete the form below. Your responses are confidential and will only be reviewed by the judging panel.</p>
     </div>
-    <div id="form-error" class="form-error"></div>
-    <button type="submit" class="btn-submit" id="submit-btn">Submit Recommendation</button>
-    <div id="form-success" class="form-success">Thank you for your recommendation.</div>
-  </form>
+
+    <form id="referenceForm" onsubmit="handleSubmit(event)">
+      <div id="formAlert"></div>
+
+      <div class="form-section-label">Your Reference</div>
+
+      <label class="form-label">How long have you known the nominee?</label>
+      <input type="text" class="form-input" name="how_long_known" required placeholder="e.g. 5 years, Since 2019">
+
+      <label class="form-label">Nominee Strengths</label>
+      <p class="form-hint">Minimum 20 characters. What are the nominee's greatest professional strengths?</p>
+      <textarea class="form-input" name="nominee_strengths" required minlength="20" placeholder="Describe the nominee's key strengths, capabilities, and qualities that make them effective..."></textarea>
+
+      <label class="form-label">Nominee Impact</label>
+      <p class="form-hint">Minimum 20 characters. Describe the impact the nominee has had in their community or field.</p>
+      <textarea class="form-input" name="nominee_impact" required minlength="20" placeholder="Share specific examples of the nominee's impact on their community, clients, or sector..."></textarea>
+
+      <label class="form-label">Recommendation</label>
+      <p class="form-hint">Minimum 20 characters. Why do you recommend this nominee for a Cause Catalyst Award?</p>
+      <textarea class="form-input" name="recommendation_text" required minlength="20" placeholder="Explain why this nominee deserves recognition and what sets them apart..."></textarea>
+
+      <label class="form-label">Additional Comments</label>
+      <textarea class="form-input" name="additional_comments" placeholder="Any additional context or information you'd like to share (optional)" style="min-height:100px"></textarea>
+
+      <button type="submit" class="btn-primary" id="submitBtn">Submit Reference</button>
+    </form>
+  </div>
+
+  <div id="errorState" style="display:none">
+    <div class="completed-state">
+      <div class="section-kicker" style="justify-content:center">Error</div>
+      <h1 class="page-title">Invalid Link</h1>
+      <p class="page-subtitle">This reference link is invalid or has expired. Please check the URL or contact the awards team for assistance.</p>
+    </div>
+  </div>
 </div>
+
 <script src="assets/js/praiz-api.js"></script>
 <script>
-  const token = new URLSearchParams(location.search).get('token') || location.pathname.split('/').filter(Boolean).pop();
-  async function init() {
-    if (!token || token === 'reference-form.html') { document.getElementById('loading').innerHTML = '<p style="color:var(--red)">No token. Use the link from your email.</p>'; return; }
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('reference-form').style.display = 'block';
+function getToken() {
+  // Try path-based: /reference/{token}
+  const pathMatch = window.location.pathname.match(/\/reference\/([^/]+)/);
+  if (pathMatch) return pathMatch[1];
+  // Fallback to query param
+  const params = new URLSearchParams(window.location.search);
+  return params.get('token');
+}
+
+async function init() {
+  const token = getToken();
+  if (!token) {
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('errorState').style.display = '';
+    return;
   }
-  document.getElementById('reference-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn'), err = document.getElementById('form-error');
-    err.style.display = 'none'; btn.disabled = true; btn.textContent = 'Submitting...';
-    const data = {}; new FormData(this).forEach((v, k) => { if (v) data[k] = v; });
-    try { await PraizAPI.submitReference(token, data); this.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; }
-    catch (e) { err.innerHTML = e.error || 'Something went wrong.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Submit Recommendation'; }
-  });
-  init();
+
+  // References don't have a status endpoint in the API, so just show the form
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('formState').style.display = '';
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const token = getToken();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const alertEl = document.getElementById('formAlert');
+
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((val, key) => { data[key] = val; });
+
+  // Client-side min-length validation
+  const minFields = ['nominee_strengths', 'nominee_impact', 'recommendation_text'];
+  for (const field of minFields) {
+    if (data[field] && data[field].length < 20) {
+      const label = field.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      alertEl.innerHTML = `<div class="form-alert form-alert-error"><div class="alert-title">Too Short</div>"${label}" must be at least 20 characters.</div>`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  alertEl.innerHTML = '';
+
+  try {
+    await PraizAPI.submitReference(token, data);
+    document.getElementById('formState').style.display = 'none';
+    document.getElementById('completedState').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Submit Reference';
+    const msg = err.message || err.error || 'Something went wrong. Please try again.';
+    alertEl.innerHTML = `<div class="form-alert form-alert-error"><div class="alert-title">Submission Failed</div>${msg}</div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+init();
 </script>
 </body>
 </html>
