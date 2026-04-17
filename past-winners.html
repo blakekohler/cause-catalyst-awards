@@ -334,8 +334,8 @@ async function init() {
       html += `<div class="winners-year-header">${year}</div>`;
       html += '<div class="winners-grid">';
       byYear[year].forEach(w => {
-        const name = w.nominee_name || w.name || 'Winner';
-        const org = w.nominee_organization || w.organization || '';
+        const name = w.display_name || w.nominee_name || w.name || 'Winner';
+        const org = w.display_organization || w.nominee_organization || w.organization || '';
         const category = w.category_name || w.category || '';
         html += `
           <div class="winner-card">
