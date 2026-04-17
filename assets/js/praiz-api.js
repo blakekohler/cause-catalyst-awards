@@ -21,6 +21,10 @@ const PraizAPI = {
     });
     const json = await res.json();
     if (!res.ok) throw { status: res.status, ...json };
+    if (json.requires_payment && json.checkout_url) {
+      window.location.href = json.checkout_url;
+      return json;
+    }
     return json;
   },
 
