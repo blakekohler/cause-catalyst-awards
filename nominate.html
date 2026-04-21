@@ -555,7 +555,14 @@ async function handleSubmit(e) {
   } catch (err) {
     btn.disabled = false;
     btn.textContent = 'Submit Nomination';
-    const msg = err.message || err.error || 'Something went wrong. Please try again.';
+    let msg = err.message || err.error || 'Something went wrong. Please try again.';
+    if (err.details?.fieldErrors) {
+      msg += '<ul style="margin-top:8px;padding-left:20px;list-style:disc">';
+      Object.entries(err.details.fieldErrors).forEach(([field, errors]) => {
+        msg += `<li>${field}: ${(errors || []).join(', ')}</li>`;
+      });
+      msg += '</ul>';
+    }
     alertEl.innerHTML = `<div class="form-alert form-alert-error"><div class="alert-title">Submission Failed</div>${msg}</div>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
