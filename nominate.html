@@ -505,12 +505,17 @@ async function init() {
       grid.innerHTML = '<div style="color:var(--muted);font-style:italic;font-size:14px;grid-column:1/-1">No categories available.</div>';
       return;
     }
-    grid.innerHTML = categories.map((cat, i) => `
+    grid.innerHTML = categories.map((cat, i) => {
+      const price = cat.price_cents > 0 ? `$${(cat.price_cents / 100).toFixed(0)}` : 'Free';
+      return `
       <div>
         <input type="radio" class="category-radio" name="category_id" id="cat_${cat.id}" value="${cat.id}" ${i === 0 ? 'required' : ''}>
-        <label class="category-label" for="cat_${cat.id}">${cat.name}</label>
-      </div>
-    `).join('');
+        <label class="category-label" for="cat_${cat.id}">
+          ${cat.name}
+          <span style="display:block;font-size:10px;letter-spacing:0.14em;margin-top:4px;color:${cat.price_cents > 0 ? 'var(--red)' : 'var(--muted)'};font-weight:700">${cat.price_cents > 0 ? 'Nomination Fee: ' + price : 'Free to nominate'}</span>
+        </label>
+      </div>`;
+    }).join('');
   } catch (err) {
     console.error('Failed to load program:', err);
     document.getElementById('categoryGrid').innerHTML =
