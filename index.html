@@ -273,7 +273,7 @@ nav {
   max-width: 340px; text-align: right; font-style: italic;
 }
 
-.cat-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .cat-card {
   border-right: 1px solid var(--rule);
   position: relative; overflow: hidden; transition: background 0.25s;
@@ -720,82 +720,13 @@ footer {
 <div class="categories-section" id="categories">
   <div class="section-header reveal">
     <div>
-      <div class="section-kicker">Award Categories · 2026</div>
-      <h2 class="section-title">Five ways<br>to stand out.</h2>
+      <div class="section-kicker">Award Categories</div>
+      <h2 class="section-title">Nominate<br>for recognition.</h2>
     </div>
     <p class="section-intro">Recognition that means something — judged by sector leaders on criteria that reflect the actual work.</p>
   </div>
-  <div class="cat-grid">
-    <div class="cat-card reveal">
-      <div class="cat-photo-wrap">
-        <img class="cat-photo"
-          src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=75&fit=crop&crop=center"
-          alt="Organization of the year" loading="lazy">
-      </div>
-      <div class="cat-body">
-        <span class="cat-number">01</span>
-        <span class="cat-icon">🌟</span>
-        <div class="cat-name">Organization<br>of the <em>Year</em></div>
-        <p class="cat-desc">Holistic excellence across client outcomes, staff culture, and community trust.</p>
-        <span class="cat-tag">Open to All</span>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-photo-wrap">
-        <img class="cat-photo"
-          src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=75&fit=crop&crop=center"
-          alt="Innovation in impact" loading="lazy">
-      </div>
-      <div class="cat-body">
-        <span class="cat-number">02</span>
-        <span class="cat-icon">💡</span>
-        <div class="cat-name"><em>Innovation</em><br>in Impact</div>
-        <p class="cat-desc">A bold, data-informed program model that meaningfully shifted outcomes.</p>
-        <span class="cat-tag">Open to All</span>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-photo-wrap">
-        <img class="cat-photo"
-          src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=75&fit=crop&crop=faces,center"
-          alt="Excellence in listening" loading="lazy">
-      </div>
-      <div class="cat-body">
-        <span class="cat-number">03</span>
-        <span class="cat-icon">🎙️</span>
-        <div class="cat-name">Excellence<br>in <em>Listening</em></div>
-        <p class="cat-desc">Built genuine client feedback loops — and acted on what they heard.</p>
-        <span class="cat-tag">Flagship Category</span>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-photo-wrap">
-        <img class="cat-photo"
-          src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=75&fit=crop&crop=center"
-          alt="Rising impact" loading="lazy">
-      </div>
-      <div class="cat-body">
-        <span class="cat-number">04</span>
-        <span class="cat-icon">🌱</span>
-        <div class="cat-name"><em>Rising</em><br>Impact Award</div>
-        <p class="cat-desc">Orgs under five years demonstrating outsized impact for their size and stage.</p>
-        <span class="cat-tag">Est. &lt; 5 yrs</span>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-photo-wrap">
-        <img class="cat-photo"
-          src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400&q=75&fit=crop&crop=faces,center"
-          alt="Leadership excellence" loading="lazy">
-      </div>
-      <div class="cat-body">
-        <span class="cat-number">05</span>
-        <span class="cat-icon">🤝</span>
-        <div class="cat-name">Leadership<br><em>Excellence</em></div>
-        <p class="cat-desc">An individual leader whose vision and humility transformed their organization.</p>
-        <span class="cat-tag">Individuals</span>
-      </div>
-    </div>
+  <div class="cat-grid" id="catGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-style:italic">Loading categories...</div>
   </div>
 </div>
 
@@ -946,14 +877,54 @@ footer {
   </div>
 </div>
 
+<script src="assets/js/praiz-api.js"></script>
 <script>
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
   function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+  const photos = [
+    'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=75&fit=crop&crop=center',
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=75&fit=crop&crop=center',
+    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=75&fit=crop&crop=faces,center',
+  ];
+  const icons = ['🏆', '👤', '⚡'];
+
+  async function loadCategories() {
+    try {
+      const program = await PraizAPI.getProgram();
+      const grid = document.getElementById('catGrid');
+      grid.innerHTML = program.categories.map((cat, i) => {
+        const price = cat.price_cents > 0 ? `$${(cat.price_cents / 100).toFixed(0)}` : 'Free';
+        const num = String(i + 1).padStart(2, '0');
+        return `
+        <div class="cat-card reveal">
+          <div class="cat-photo-wrap">
+            <img class="cat-photo" src="${photos[i % photos.length]}" alt="${cat.name}" loading="lazy">
+          </div>
+          <div class="cat-body">
+            <span class="cat-number">${num}</span>
+            <span class="cat-icon">${icons[i % icons.length]}</span>
+            <div class="cat-name">${cat.name}</div>
+            <p class="cat-desc">${cat.description || ''}</p>
+            <span class="cat-tag" style="${cat.price_cents > 0 ? 'background:var(--red);color:#fff;border-color:var(--red)' : ''}">${cat.price_cents > 0 ? 'Nomination Fee: ' + price : 'Free'}</span>
+          </div>
+        </div>`;
+      }).join('');
+
+      // Re-observe for reveal animations
+      document.querySelectorAll('.cat-card.reveal').forEach(el => obs.observe(el));
+    } catch (err) {
+      document.getElementById('catGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--red)">Failed to load categories.</div>';
+    }
+  }
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  loadCategories();
 </script>
 </body>
 </html>
