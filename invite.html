@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invite Someone to Nominate — Cause Catalyst Awards</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper: #f4ede0;
+  --paper-dark: #e8dccb;
+  --ink: #17120d;
+  --ink-mid: #3d2f23;
+  --red: #c0392b;
+  --red-dark: #96261e;
+  --muted: #7a6550;
+  --rule: rgba(23,18,13,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 40px;
+  height: 60px;
+}
+.nav-left { display: flex; align-items: center; gap: 24px; }
+.nav-left a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; transition: color 0.2s;
+}
+.nav-left a:hover { color: var(--ink); }
+.nav-center a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 18px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.nav-center-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
+.nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.btn-nav-nominate {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 12px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: var(--red); color: #fff;
+  padding: 8px 20px; text-decoration: none; transition: background 0.2s;
+  border: none; cursor: pointer;
+}
+.btn-nav-nominate:hover { background: var(--red-dark); }
+
+/* ── HERO ── */
+.invite-hero {
+  margin-top: 60px;
+  border-bottom: 2px solid var(--ink);
+  padding: 72px 40px 64px;
+  position: relative;
+}
+.invite-hero-inner {
+  max-width: 680px;
+}
+.section-kicker {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.section-kicker::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+.invite-hero h1 {
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.07; color: var(--ink);
+  margin-bottom: 20px;
+}
+.invite-hero h1 .red { color: var(--red); }
+.invite-hero .lead {
+  font-size: 16px; line-height: 1.75;
+  color: var(--ink-mid); font-style: italic; max-width: 560px;
+}
+
+/* ── MAIN CONTENT ── */
+.invite-content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  border-bottom: 2px solid var(--ink);
+}
+.invite-form-col {
+  padding: 56px 44px;
+  border-right: 1px solid var(--rule);
+}
+.invite-sidebar-col {
+  padding: 56px 36px;
+}
+
+/* Form */
+.form-title {
+  font-family: 'Abril Fatface', serif;
+  font-size: 28px; color: var(--ink); margin-bottom: 8px;
+}
+.form-subtitle {
+  font-size: 14px; color: var(--muted); font-style: italic;
+  margin-bottom: 36px; line-height: 1.7;
+}
+.form-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 6px;
+}
+.form-input {
+  width: 100%; background: #fff; border: 1px solid rgba(23,18,13,0.2);
+  border-bottom: 2px solid var(--ink); color: var(--ink);
+  padding: 12px 14px; font-family: 'Libre Baskerville', serif;
+  font-size: 15px; outline: none; transition: border-color 0.2s; margin-bottom: 24px; display: block;
+}
+.form-input:focus { border-bottom-color: var(--red); }
+.btn-submit {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--red); color: #fff; padding: 16px 36px;
+  border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.form-success {
+  display: none;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #166534;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.form-error {
+  display: none;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  color: var(--red-dark);
+  font-size: 14px;
+}
+.send-another {
+  margin-top: 10px;
+  background: none; border: none;
+  color: var(--red); font-family: 'Libre Baskerville', serif;
+  font-size: 13px; cursor: pointer; text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar-block {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.sidebar-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.sidebar-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 10px;
+}
+.sidebar-text {
+  font-size: 13px; color: var(--muted); line-height: 1.7; font-style: italic;
+}
+.sidebar-cta {
+  background: var(--ink); padding: 28px 24px; position: relative;
+}
+.sidebar-cta-title {
+  font-family: 'Abril Fatface', serif;
+  font-size: 22px; color: var(--paper); margin-bottom: 8px;
+}
+.sidebar-cta-text {
+  font-size: 13px; color: rgba(244,237,224,0.6); font-style: italic;
+  margin-bottom: 16px; line-height: 1.6;
+}
+.btn-sidebar-cta {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--red); color: #fff; padding: 12px 24px;
+  border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.2s;
+}
+.btn-sidebar-cta:hover { background: var(--red-dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--paper-dark); border-top: 2px solid var(--ink); padding: 52px 40px 36px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 40px; padding-bottom: 36px; border-bottom: 1px solid var(--rule);
+}
+.footer-brand-name {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: 24px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink); display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+}
+.footer-brand-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
+.footer-brand-desc { font-size: 14px; color: var(--muted); line-height: 1.7; font-style: italic; max-width: 260px; }
+.footer-col-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 10px;
+}
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a { font-size: 14px; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+.footer-col-links a:hover { color: var(--red); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.footer-powered a { color: var(--ink); text-decoration: none; font-weight: 700; transition: color 0.2s; }
+.footer-powered a:hover { color: var(--red); }
+
+@media (max-width: 960px) {
+  nav { grid-template-columns: 1fr auto; }
+  .nav-left { display: none; }
+  .invite-content { grid-template-columns: 1fr; }
+  .invite-form-col { border-right: none; border-bottom: 1px solid var(--rule); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .invite-hero { padding: 64px 20px 48px; }
+  .invite-form-col { padding: 36px 20px; }
+  .invite-sidebar-col { padding: 36px 20px; }
+  nav { padding: 0 20px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html#categories">Categories</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#process">Process</a>
+  </div>
+  <div class="nav-center">
+    <a href="index.html"><span class="nav-center-dot"></span>Cause Catalyst Awards</a>
+  </div>
+  <div class="nav-right">
+    <a href="nominate.html" class="btn-nav-nominate">Nominate &rarr;</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="invite-hero">
+  <div class="invite-hero-inner">
+    <div class="section-kicker">Spread the Word</div>
+    <h1>Know someone who should <span class="red">nominate?</span></h1>
+    <p class="lead">Send them an email invitation explaining the Cause Catalyst Awards and how they can recognize an organization doing extraordinary work in their community.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="invite-content">
+  <div class="invite-form-col">
+    <h2 class="form-title">Send an invitation</h2>
+    <p class="form-subtitle">Enter their email and we'll send a branded invitation with everything they need to know about nominating.</p>
+    <form id="inviteForm">
+      <label class="form-label">Their Email Address</label>
+      <input type="email" class="form-input" id="email" placeholder="colleague@organization.org" required>
+      <button type="submit" class="btn-submit" id="submitBtn">Send Invitation &rarr;</button>
+      <div class="form-success" id="formSuccess">
+        &#10003; Invitation sent! They'll receive an email shortly.
+        <br><button type="button" class="send-another" onclick="resetForm()">Send another invitation</button>
+      </div>
+      <div class="form-error" id="formError"></div>
+    </form>
+  </div>
+  <div class="invite-sidebar-col">
+    <div class="sidebar-block">
+      <div class="sidebar-title">What they'll receive</div>
+      <p class="sidebar-text">A branded email explaining the Cause Catalyst Awards, why nominations matter, and a direct link to submit a nomination.</p>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-title">Quick &amp; easy</div>
+      <p class="sidebar-text">It takes just a few seconds to invite someone. Send as many invitations as you'd like &mdash; help us spread the word!</p>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-cta">
+        <div class="sidebar-cta-title">Nominate someone yourself?</div>
+        <p class="sidebar-cta-text">Skip the invitation and go straight to the nomination form.</p>
+        <a href="nominate.html" class="btn-sidebar-cta">Submit a Nomination &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name"><span class="footer-brand-dot"></span>Cause Catalyst Awards</div>
+      <p class="footer-brand-desc">Celebrating the nonprofits and human services programs changing lives across North America &mdash; every year.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Awards</div>
+      <ul class="footer-col-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <li><a href="past-winners.html">Past Winners</a></li>
+        <li><a href="nominate.html">Nominate</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Portal</div>
+      <ul class="footer-col-links">
+        <li><a href="#">Judge Login</a></li>
+        <li><a href="#">Admin Login</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Platform</div>
+      <ul class="footer-col-links">
+        <li><a href="#">The Listening Awards</a></li>
+        <li><a href="#">Powered by Praiz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Cause Catalyst Awards. All rights reserved.</span>
+    <span class="footer-powered">Powered by <a href="#">Praiz</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/praiz-api.js"></script>
+<script>
+  const PRAIZ_API = window.PRAIZ_API_URL || 'https://praiz-two.vercel.app';
+  const form = document.getElementById('inviteForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successEl = document.getElementById('formSuccess');
+  const errorEl = document.getElementById('formError');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+
+    try {
+      const program = await PraizAPI.getProgram();
+      const res = await fetch(PRAIZ_API + '/api/invite-to-nominate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, program_id: program.id }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to send invitation');
+      }
+
+      successEl.style.display = 'block';
+      document.getElementById('email').value = '';
+    } catch (err) {
+      errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+      errorEl.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send Invitation &rarr;';
+    }
+  }
+
+  function resetForm() {
+    successEl.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('email').focus();
+  }
+
+  form.addEventListener('submit', handleSubmit);
+</script>
+</body>
+</html>
