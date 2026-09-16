@@ -296,6 +296,7 @@ textarea.form-input { min-height: 120px; resize: vertical; }
         </div>
       </div>
 
+      <label style="display:flex;gap:10px;align-items:flex-start;margin:0 0 18px;font-size:14px;cursor:pointer"><input type="checkbox" name="social_consent" style="margin-top:3px"> <span>You may feature my nomination on the award&#39;s social media (name, photo, and a line from my bio). Optional.</span></label>
       <button type="submit" class="btn-primary" id="submitBtn">Submit Nominee Profile</button>
     </form>
   </div>
@@ -358,6 +359,7 @@ async function handleSubmit(e) {
   const formData = new FormData(form);
   const data = {};
   formData.forEach((val, key) => { data[key] = val; });
+  data.social_consent = !!form.querySelector('[name=social_consent]')?.checked;
 
   btn.disabled = true;
   btn.textContent = 'Submitting...';
