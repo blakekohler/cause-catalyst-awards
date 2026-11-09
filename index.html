@@ -405,6 +405,29 @@ nav {
   color: var(--muted);
 }
 
+/* ── WINNERS ── */
+.winners-section { border-bottom: 2px solid var(--ink); scroll-margin-top: 60px; }
+.winners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.winner-card { border-right: 1px solid var(--rule); padding: 32px 28px; }
+.winner-card:last-child { border-right: none; }
+.winner-category {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 14px;
+}
+.winner-name {
+  font-family: 'Abril Fatface', serif;
+  font-size: 26px; line-height: 1.15; color: var(--ink); margin-bottom: 8px;
+}
+.winner-org { font-size: 14px; color: var(--ink-mid); font-style: italic; line-height: 1.5; }
+.finalists-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); padding: 20px 28px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.finalists-grid .winner-card { padding: 24px 28px; }
+.finalists-grid .winner-name { font-size: 20px; }
+
 /* ── NOMINATE ── */
 .nominate-full {
   background: var(--ink); color: var(--paper);
@@ -597,17 +620,17 @@ footer {
     <a href="#process">Process</a>
   </div>
   <div class="nav-center">
-    <a href="#"><span class="nav-center-dot"></span>Cause Catalyst Awards</a>
+    <a href="index.html"><span class="nav-center-dot"></span>Cause Catalyst Awards</a>
   </div>
   <div class="nav-right">
     <button class="btn-nav-login" onclick="openModal()">Judge Login</button>
-    <a href="nominate.html" class="btn-nav-nominate">Nominate →</a>
+    <a href="#winners" class="btn-nav-nominate">Winners →</a>
   </div>
 </nav>
 
 <div class="announce-bar">
-  <span class="announce-pill">Now Open</span>
-  <span>2026 Nominations are open through September 30 — 2nd Annual Cycle</span>
+  <span class="announce-pill">Closed</span>
+  <span>2026 Nominations are closed and winners have been announced — 2nd Annual Cycle</span>
 </div>
 
 <!-- HERO -->
@@ -615,7 +638,7 @@ footer {
   <div class="hero-masthead">
     <div class="masthead-meta">
       <strong>2nd Annual Cycle</strong>
-      Nominations Open · Est. 2024
+      Winners Announced · Est. 2024
     </div>
     <div class="masthead-center">
       <span class="masthead-year-big">2026</span>
@@ -640,7 +663,7 @@ footer {
           Cause Catalyst Awards honor nonprofits and human services programs that lead with courage, listen with intention, and prove that impact is built — not accidental.
         </p>
         <div class="hero-ctas">
-          <a href="nominate.html" class="btn-primary">Submit a Nomination</a>
+          <a href="#winners" class="btn-primary">See the 2026 Winners</a>
           <a href="#categories" class="btn-secondary">See Categories</a>
         </div>
       </div>
@@ -654,6 +677,47 @@ footer {
         loading="eager"
       >
       <div class="hero-photo-caption">Volunteers at a community food program, Chicago</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2026 WINNERS -->
+<div class="winners-section" id="winners">
+  <div class="section-header">
+    <div>
+      <div class="section-kicker">2026 Winners</div>
+      <h2 class="section-title">This year's<br>honorees.</h2>
+    </div>
+    <p class="section-intro">Congratulations to the organizations and leaders recognized in the 2026 Cause Catalyst Awards.</p>
+  </div>
+  <div class="winners-grid">
+    <div class="winner-card">
+      <div class="winner-category">Organization of the Year</div>
+      <div class="winner-name">Orange County Rescue Mission</div>
+    </div>
+    <div class="winner-card">
+      <div class="winner-category">Executive of the Year</div>
+      <div class="winner-name">Domonique Cooper</div>
+      <div class="winner-org">CEO, Atlanta CASA</div>
+    </div>
+    <div class="winner-card">
+      <div class="winner-category">The Catalyst Award</div>
+      <div class="winner-name">Jasmine Balignasay-Chavez</div>
+      <div class="winner-org">Hope Survives</div>
+    </div>
+  </div>
+  <div class="finalists-title">Finalists</div>
+  <div class="winners-grid finalists-grid">
+    <div class="winner-card">
+      <div class="winner-name">Highly Favored Foundation</div>
+    </div>
+    <div class="winner-card">
+      <div class="winner-name">Alberta Ablordeppey</div>
+      <div class="winner-org">Highly Favored Foundation</div>
+    </div>
+    <div class="winner-card">
+      <div class="winner-name">Nehashree Bheemu</div>
+      <div class="winner-org">Purple Hour</div>
     </div>
   </div>
 </div>
@@ -721,12 +785,44 @@ footer {
   <div class="section-header reveal">
     <div>
       <div class="section-kicker">Award Categories</div>
-      <h2 class="section-title">Nominate<br>for recognition.</h2>
+      <h2 class="section-title">The 2026<br>categories.</h2>
     </div>
     <p class="section-intro">Recognition that means something — judged by sector leaders on criteria that reflect the actual work.</p>
   </div>
   <div class="cat-grid" id="catGrid">
-    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-style:italic">Loading categories...</div>
+    <div class="cat-card reveal">
+      <div class="cat-photo-wrap">
+        <img class="cat-photo" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=75&fit=crop&crop=center" alt="Organization of the Year" loading="lazy">
+      </div>
+      <div class="cat-body">
+        <span class="cat-number">01</span>
+        <span class="cat-icon">🏆</span>
+        <div class="cat-name">Organization of the Year</div>
+        <p class="cat-desc">This award recognizes a nonprofit organization that has demonstrated exceptional service, innovation, and a tangible impact on their community. The winning organization should be committed to their mission and have a track record of success.</p>
+      </div>
+    </div>
+    <div class="cat-card reveal">
+      <div class="cat-photo-wrap">
+        <img class="cat-photo" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=75&fit=crop&crop=center" alt="Executive of the Year" loading="lazy">
+      </div>
+      <div class="cat-body">
+        <span class="cat-number">02</span>
+        <span class="cat-icon">👤</span>
+        <div class="cat-name">Executive of the Year</div>
+        <p class="cat-desc">This prestigious award honors a nonprofit leader whose vision, leadership, and dedication have inspired change and growth in their organization and the community. Nominations should highlight leadership skills, innovation, and significant impact.</p>
+      </div>
+    </div>
+    <div class="cat-card reveal">
+      <div class="cat-photo-wrap">
+        <img class="cat-photo" src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=75&fit=crop&crop=faces,center" alt="The Catalyst Award" loading="lazy">
+      </div>
+      <div class="cat-body">
+        <span class="cat-number">03</span>
+        <span class="cat-icon">⚡</span>
+        <div class="cat-name">The Catalyst Award</div>
+        <p class="cat-desc">This is the wildcard category, open to any nonprofit initiative, project, team, or individual whose work has gone above and beyond in creating lasting impact, inspiring others, or pioneering new approaches to social change.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -742,7 +838,7 @@ footer {
     </div>
     <div class="pull-quote">The hardest work in the world deserves the loudest recognition.</div>
     <p class="body-text">Cause Catalyst Awards are presented annually to human services organizations across North America — recognizing nonprofits that lead with courage, listen to the people they serve, and prove that impact is built, not accidental.</p>
-    <p class="body-text">Winners are scored by independent sector leaders on measurable outcomes, client-centered practices, and organizational commitment to continuous improvement. Nominations are open to any qualifying nonprofit or human services program in the US or Canada.</p>
+    <p class="body-text">Winners are scored by independent sector leaders on measurable outcomes, client-centered practices, and organizational commitment to continuous improvement. Each cycle, nominations are open to any qualifying nonprofit or human services program in the US or Canada.</p>
   </div>
   <div class="col-block reveal" id="process">
     <div class="section-kicker">How It Works</div>
@@ -753,7 +849,7 @@ footer {
         <div>
           <div class="step-name">Nominate</div>
           <p class="step-desc">Submit for any qualifying org or leader. Self-nominations are welcome.</p>
-          <span class="step-date">Now — Sept 30, 2026</span>
+          <span class="step-date">Closed Sept 30, 2026</span>
         </div>
       </div>
       <div class="process-step">
@@ -806,18 +902,17 @@ footer {
     <div class="nominate-photo-overlay"></div>
   </div>
   <div class="nominate-text reveal">
-    <div class="section-kicker" style="color:#e05a48"><span style="background:#e05a48;width:20px;height:2px;display:inline-block;margin-right:10px;vertical-align:middle"></span>Nominations Now Open</div>
+    <div class="section-kicker" style="color:#e05a48"><span style="background:#e05a48;width:20px;height:2px;display:inline-block;margin-right:10px;vertical-align:middle"></span>Nominations Closed</div>
     <h2 class="nominate-title">Know an org doing <span class="red">extraordinary</span> work?</h2>
-    <p class="nominate-sub">Nominations take about 15 minutes. You don't need to be affiliated — anyone can nominate.</p>
+    <p class="nominate-sub">2026 nominations have closed and this year's winners have been announced. Nominations for the next cycle will open here.</p>
     <div class="deadline-row">
-      <div class="deadline-blink"></div>
       <div class="deadline-info">
-        <div class="deadline-label">Submissions close</div>
+        <div class="deadline-label">2026 submissions closed</div>
         <div class="deadline-date">September 30, 2026</div>
       </div>
     </div>
     <div class="nominate-btns">
-      <a href="nominate.html" class="btn-nominate-big">Submit a Nomination →</a>
+      <a href="#winners" class="btn-nominate-big">See the 2026 Winners →</a>
       <a href="#" class="btn-login-ghost" onclick="openModal(); return false;">Judge / Admin Login</a>
     </div>
   </div>
@@ -833,9 +928,9 @@ footer {
     <div>
       <div class="footer-col-title">Awards</div>
       <ul class="footer-col-links">
-        <li><a href="#">About</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#categories">Categories</a></li>
-        <li data-requires-winners hidden><a href="past-winners.html">Past Winners</a></li>
+        <li><a href="past-winners.html">Past Winners</a></li>
         <li><a href="nominate.html">Nominate</a></li>
       </ul>
     </div>
@@ -844,20 +939,20 @@ footer {
       <ul class="footer-col-links">
         <li><a href="#" onclick="openModal(); return false;">Judge Login</a></li>
         <li><a href="#" onclick="openModal(); return false;">Admin Login</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="mailto:jamie@praiz-awards.com">Contact</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Platform</div>
       <ul class="footer-col-links">
-        <li><a href="#">The Listening Awards</a></li>
-        <li><a href="#">Powered by Praiz</a></li>
+        <li><a href="https://thelisteningawards.com">The Listening Awards</a></li>
+        <li><a href="https://praiz-two.vercel.app">Powered by Praiz</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Cause Catalyst Awards. All rights reserved.</span>
-    <span class="footer-powered">Powered by <a href="#">Praiz</a></span>
+    <span class="footer-powered">Powered by <a href="https://praiz-two.vercel.app">Praiz</a></span>
   </div>
 </footer>
 
@@ -877,54 +972,15 @@ footer {
   </div>
 </div>
 
-<script src="assets/js/praiz-api.js"></script>
 <script>
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
   function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
-  const photos = [
-    'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=75&fit=crop&crop=center',
-    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=75&fit=crop&crop=center',
-    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=75&fit=crop&crop=faces,center',
-  ];
-  const icons = ['🏆', '👤', '⚡'];
-
-  async function loadCategories() {
-    try {
-      const program = await PraizAPI.getProgram();
-      const grid = document.getElementById('catGrid');
-      grid.innerHTML = program.categories.map((cat, i) => {
-        const price = cat.price_cents > 0 ? `$${(cat.price_cents / 100).toFixed(0)}` : 'Free';
-        const num = String(i + 1).padStart(2, '0');
-        return `
-        <div class="cat-card reveal">
-          <div class="cat-photo-wrap">
-            <img class="cat-photo" src="${photos[i % photos.length]}" alt="${cat.name}" loading="lazy">
-          </div>
-          <div class="cat-body">
-            <span class="cat-number">${num}</span>
-            <span class="cat-icon">${icons[i % icons.length]}</span>
-            <div class="cat-name">${cat.name}</div>
-            <p class="cat-desc">${cat.description || ''}</p>
-            <span class="cat-tag" style="${cat.price_cents > 0 ? 'background:var(--red);color:#fff;border-color:var(--red)' : ''}">${cat.price_cents > 0 ? 'Nomination Fee: ' + price : 'Free'}</span>
-          </div>
-        </div>`;
-      }).join('');
-
-      // Re-observe for reveal animations
-      document.querySelectorAll('.cat-card.reveal').forEach(el => obs.observe(el));
-    } catch (err) {
-      document.getElementById('catGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--red)">Failed to load categories.</div>';
-    }
-  }
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  loadCategories();
 </script>
 </body>
 </html>

@@ -281,19 +281,19 @@ footer {
       <div class="footer-col-title">Portal</div>
       <ul class="footer-col-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="mailto:jamie@praiz-awards.com">Contact</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Platform</div>
       <ul class="footer-col-links">
-        <li><a href="#">Powered by Praiz</a></li>
+        <li><a href="https://praiz-two.vercel.app">Powered by Praiz</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Cause Catalyst Awards. All rights reserved.</span>
-    <span class="footer-powered">Powered by <a href="#">Praiz</a></span>
+    <span class="footer-powered">Powered by <a href="https://praiz-two.vercel.app">Praiz</a></span>
   </div>
 </footer>
 
@@ -341,7 +341,7 @@ async function init() {
           <div class="winner-card">
             <div class="winner-category">${category}</div>
             <div class="winner-name">${name}</div>
-            ${org ? `<div class="winner-org">${org}</div>` : ''}
+            ${org && org !== name ? `<div class="winner-org">${org}</div>` : ''}
             <span class="winner-year-tag">${year} Recipient</span>
           </div>`;
       });
