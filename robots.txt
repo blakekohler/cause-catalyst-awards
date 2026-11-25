@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /nominee/
+Disallow: /reference/
+Disallow: /thank-you
+Sitemap: https://www.causecatalystawards.com/sitemap.xml
