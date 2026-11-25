@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /nominee/
 Disallow: /reference/
 Disallow: /thank-you
-Sitemap: https://www.causecatalystawards.com/sitemap.xml
+Sitemap: https://causecatalystawards.com/sitemap.xml
